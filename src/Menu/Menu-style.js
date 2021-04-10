@@ -14,14 +14,18 @@ export const MenuListContainer = styled.ul`
     list-style: none;
     width: 22.2%;
     margin-left: -0.5%;
+    border-radius: 8px;
+    overflow: hidden;
     box-sizing: border-box; 
 `;
 
-export const List  = styled.li`
+export const List  = styled.div`
   width: 100%;
   box-sizing: border-box;
   height: fit-content;
+  background-color: #ffffff;
   padding: 5%;
-  background-color: yellow;
+  color: #585858;
+  border-bottom: 1px solid #585858; 
 `;
 

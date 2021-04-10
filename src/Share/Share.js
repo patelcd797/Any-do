@@ -16,9 +16,9 @@ const ShareList = () => {
         <ShareContainer>
              <Share onClick ={handleClick}/>
             { listVisible ? <ShareListContainer>
-                <List><a href="#">facebook</a></List>
-                <List><a href="#">google</a></List>
-                <List><a href="#">instagram</a></List>
+                <List><a href="https://www.facebook.com/" target="_blank">facebook</a></List>
+                <List><a href="https://www.google.com/" target="_blank">google</a></List>
+                <List><a href="https://www.instagram.com/" target="_blank">instagram</a></List>
             </ShareListContainer> : null }
         </ShareContainer>
     )

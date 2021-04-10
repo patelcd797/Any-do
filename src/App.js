@@ -10,6 +10,7 @@ import { Route, Switch } from 'react-router-dom';
 import ForgotPassword from './Uthentication/ForgotPassword/ForgotPassword';
 import Profile from './Profile/Profile';
 import TaskPage from './TaskPage/TaskPage';
+import TaskCategoryModal from './Menu/TaskCategoryModal';
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
       <Route exact path='/forgotpassword' component={ForgotPassword} />
       <Route exact path='/profile' component={Profile} />
       <Route exact path='/taskpage' component={TaskPage} />
+      <Route exact path='/taskcategory' component={TaskCategoryModal} />
     </Switch>
   );
 }
