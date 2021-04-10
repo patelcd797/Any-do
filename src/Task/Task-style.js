@@ -7,11 +7,12 @@ export const TaskContainer = styled.div`
     width: 100%;
     box-sizing: border-box;
     padding: 0.5%;
+    overflow: scroll;
 `;
 
 export const TaskList = styled.div`
   display: block;
-  padding: 7.rem;
+  padding: 0.7rem;
   color: #fffff;
   background-color: #12ffee;
   height: 2rem;
