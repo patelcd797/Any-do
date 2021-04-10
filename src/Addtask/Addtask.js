@@ -4,10 +4,19 @@ import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import { AddButton, AddtaskContainer, Input, NavigationItem } from './Addtask-style';
 
+const initialState = {
+    email: '',
+    task:  '',
+    list: 'Personal',
+    owner: 'Me',
+    subTasks: [],
+    note: '',
+    tag: []
+}
 
 const Addtask =() => {
      
-    const [state, setState] = useState({email: '', task: ''});
+    const [state, setState] = useState(initialState);
     const location = useLocation();
     const userEmail = location.state
 
@@ -15,15 +24,13 @@ const Addtask =() => {
 
 
     useEffect(() => {
-        setState({
+        setState(prev =>({
+            ...prev,
             email: userEmail,
             task: ''
-        })
+        }))
     }, [])
 
-    useEffect(() => {
-        console.log(state);
-    }, [state.task])
     const handleChange = e =>{
         setState(prev =>({
             ...prev,

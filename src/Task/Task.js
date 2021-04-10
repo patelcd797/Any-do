@@ -31,7 +31,7 @@ const Task = () => {
 
     return (
         <TaskContainer>
-            { modalFlag && <TaskPage id={id} CloseModal={CloseModal} disable/> }
+            { modalFlag && <TaskPage id={id} CloseModal={CloseModal} /> }
             {
                 state.map(item =>{
                     return (

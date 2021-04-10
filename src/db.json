@@ -8,21 +8,5 @@
       "confirmpassword": "123457"
     }
   ],
-  "tasks": [
-    {
-      "email": "chintan.ilasariya@oyorooms.com",
-      "task": "qjhdjhsjk l",
-      "id": 1
-    },
-    {
-      "email": "chintan.ilasariya@oyorooms.com",
-      "task": "qjhdjhsjk l",
-      "id": 2
-    },
-    {
-      "email": "chintan.ilasariya@oyorooms.com",
-      "task": "rhrudsjklk.leretukel;",
-      "id": 3
-    }
-  ]
+  "tasks": []
 }
