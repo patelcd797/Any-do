@@ -6,7 +6,6 @@ export const TaskCategoryModalContainer = styled.div`
     height: auto;
     min-height: 100vh; 
     padding: 1rem; 
-    background-color: SkyBlue;
     box-sizing: border-box;
 `;
 
@@ -24,6 +23,7 @@ export const BackButton = styled.button`
     display: inline-block;
     background: none;
     border: none;
+    color: #ffffff;
     font-size: 1.5rem;
     outline: none;
     box-sizing: border-box;
@@ -47,19 +47,24 @@ export const TaskContainer = styled.div`
 `;
 
 export const TaskList = styled.div`
-  display: block;
+  display: flex;
+  justify-content: space-between;
   padding: 0.7rem;
-  color: #ffffff;
-  background-color: #AA9988;
   height: 2rem;
   padding: 0.5rem;
   margin: 1rem 0;
   font-size:  1.5rem;
   font-weight: 400;
+  border-radius: 5px;
+  z-index: 2;
+  box-shadow: 0 0 5px #585858;
 `;
 
 export const Input = styled.input`
-   height: 1.5rem;
-   width: 1.5rem;
-   float: right;
+   height: 75%;
+   width: 2%;
+`;
+export const Div = styled.div`
+   display: block;
+   width: 95%;
 `;

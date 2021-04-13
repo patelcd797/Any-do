@@ -1,26 +1,16 @@
 import React, {useState} from 'react'
-import { Container, Footer, Form, H1, Header, Input, 
-         LoginFormSubContainer, LoginFormContainer, 
-         LoginFormTitle, SideContainer, MainContainer, 
-         A, Button, Div, Label, ErrorStyle } from './Login-style';
+import { Container, Footer, Form, H1, Header, Input, LoginFormContainer, 
+         LoginFormTitle, MainContainer, A, Button, Label, ErrorStyle 
+        } from './Login-style';
 import {useHistory} from 'react-router-dom';
 import {user} from '../../db.json';
-
-const initialState = {
-    email: '',
-    password: ''
-}
 
 const Login = () => {
 
     const history = useHistory();
-    const [state, setState] = useState(initialState);
+    const [state, setState] = useState({email: '', password: ''});
     const [error1, setError1] = useState('');
     const [error2, setError2] = useState('');
-    
-    const handleRegisterButton = () =>{
-        history.push('/register');
-    }
 
     const handleInput = (e) => {
         const name = e.target.name;
@@ -33,14 +23,10 @@ const Login = () => {
         console.log(state[name]);
     }
 
-    const handleLinkClick = () => {
-        history.push('/forgotpassword');
-    }
-
-
+    const handleLinkClick = () => history.push('/forgotpassword');
+    const handleRegister = () => history.push('/register');
     const handleSubmit = (e) =>{
         e.preventDefault();
-
         const dbObject = user.filter( d => d.email == state.email);
         setError1('');
         setError2('');
@@ -54,14 +40,10 @@ const Login = () => {
                 });
             }
             else
-            {
-                setError2('Password is wrong')
-            }
+             setError2('Password is wrong')
         }
         else
-        {
-            setError1('Email  is not registerd');
-        }
+          setError1('Email  is not registerd');
     } 
 
 
@@ -73,38 +55,22 @@ const Login = () => {
             <MainContainer>
                 <LoginFormContainer>
                     <LoginFormTitle>Login</LoginFormTitle>
-                    <LoginFormSubContainer>
-                        <Form onSubmit ={handleSubmit}>
-                            <H1>USER AUTHENTICATION</H1>
-                            <Label>Email</Label>
-                            <Input type= 'email' name="email" value={state.email} onChange={handleInput}/>
-                            <Label>Password</Label>
-                            <Input type="password" name="password" value={state.password} onChange={handleInput}/> 
-                            <A onClick={handleLinkClick}>Forgot Password</A>
-                            <Button type="submit" color="green">Login</Button>
-                        </Form>
-                        <SideContainer>
-                            <H1>For New Registration</H1>
-                            <Button type="submit" color="red" onClick={handleRegisterButton}>Registration</Button>
-                            <Div>
-                                {error1 && (
-                                    <ErrorStyle>
-                                        <p>**{error1}</p>
-                                    </ErrorStyle>
-                                )}
-                                {error2 && (
-                                    <ErrorStyle>
-                                        <p>**{error2}</p>
-                                    </ErrorStyle>
-                                )}
-                            </Div>
-                        </SideContainer> 
-                    </LoginFormSubContainer>
+                    <Form onSubmit ={handleSubmit}>
+                        <H1>USER AUTHENTICATION</H1>
+                        <Label>Email</Label>
+                        <Input type= 'email' name="email" value={state.email} onChange={handleInput}/>
+                        {error1 && <ErrorStyle>{error1}</ErrorStyle>}
+                        <Label>Password</Label>
+                        <Input type="password" name="password" value={state.password} onChange={handleInput}/> 
+                        {error2 && <ErrorStyle>{error2}</ErrorStyle>}
+                        <A onClick={handleLinkClick}>Forgot Password</A>
+                        <Button type="submit" color="green">Login</Button>
+                        <A onClick={handleRegister}>For New Registration</A>
+                    </Form> 
                 </LoginFormContainer>
             </MainContainer>
-        
             <Footer>
-                <H1>Gatway</H1>
+                <H1>Gateway</H1>
             </Footer>
         </Container>
     )

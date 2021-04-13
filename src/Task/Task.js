@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
-import { TaskContainer, TaskList, Input } from './Task-style';
+import { TaskContainer, TaskList, Input, Div } from './Task-style';
 import {tasks} from '../db.json';
 import TaskPage from '../TaskPage/TaskPage';
 
@@ -36,8 +36,9 @@ const Task = () => {
                 state.map(item =>{
                     return (
                     <>
-                        <TaskList onClick={handleClick} id ={item.id}>
-                            <Input type="checkbox" /> {item.task}
+                        <TaskList>
+                            <Div onClick={handleClick} id ={item.id}>{item.task}</Div>
+                            <Input type="checkbox" /> 
                         </TaskList>
                     </>)
                 })

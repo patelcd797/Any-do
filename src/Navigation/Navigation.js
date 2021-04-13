@@ -4,26 +4,20 @@ import Menu from '../Menu/Menu';
 import ShareList from '../Share/Share';
 
 const AlltaskStyle = {
-    backgroundColor: 'yellow',
     flex: '1 1 100%',
     textAlign: 'center'
-}
-
-const ShareStyle = {
-    backgroundColor: 'pink',
-    textAlign: 'right'
 }
 
 const Navigation =() => {
     return (
         <NavigationContainer>
-          <NavigationItem style= {{backgroundColor: 'pink'}}>
+          <NavigationItem>
                 <Menu /> 
           </NavigationItem>
           <NavigationItem style= {AlltaskStyle}>
               All Tasks
           </NavigationItem>
-          <NavigationItem style= {ShareStyle}>
+          <NavigationItem style= {{textAlign: 'right'}}>
                 <ShareList />
           </NavigationItem>
         </NavigationContainer>  

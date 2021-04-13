@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { useHistory, useLocation } from 'react-router-dom';
 import TaskPage from '../TaskPage/TaskPage';
 import { BackButton, CategoryHeader, CategoryTitle, TaskCategoryModalContainer, 
-          TaskContainer, TaskList, Input} from './TaskCategoryModal-style'
+          TaskContainer, TaskList, Input, Div} from './TaskCategoryModal-style'
 import {tasks} from '../db.json';
 function TaskCategoryModal() {
 
@@ -53,8 +53,9 @@ function TaskCategoryModal() {
                 state.map(item =>{
                     return (
                     <>
-                        <TaskList onClick={handleClick} id ={item.id}>
-                            <Input type="checkbox" /> {item.task}
+                        <TaskList>
+                            <Div onClick={handleClick} id ={item.id}>{item.task}</Div>
+                            <Input type="checkbox" />
                         </TaskList>
                     </>)
                 })

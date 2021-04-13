@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import img from '../../Images/Loginpagebackground.jpg';
 
@@ -9,52 +8,66 @@ export const Container =  styled.div`
     min-height: 100vh;
     height: fit-content;
     box-sizing: border-box;
+    @media only screen and (max-width: 1025px){
+        height: 100vh;
+    } 
 `;
 
 export const Header = styled.div`
-    height: 4rem;
+    height: 3%;
     background-color: #343433;
     color: #ffffff;
     padding: 1%;
-    font-size: 2rem;
+    font-size: 1.5rem;
     border-sizing: border-box;
+    @media only screen and (max-width: 1025px){
+        height: 8vh;
+        font-size: 1.1rem;
+    } 
 `;
 
 export const MainContainer = styled.div`
     width: 80%;
+    height: 74vh;
     border-sizing: border-box;
     padding-top: 1%;
     padding-bottom: 1%;
     padding-left: 10%;
     padding-right: 10%;
-    background-image: url(${img})
+    background-image: url(${img});
+    @media only screen and (max-width: 1025px){
+        padding: 0;
+        width: 100%;
+        height: 100vh;
+        background-image: none;
+    }
+
 `;
 
 export const LoginFormContainer = styled.div`
-    display: flex;
-    flex-direction: column;
-    flex: 25 1 1rem;
     border: 0.05rem solid gray;
     border-radius: 1rem;
     background-color: #ffffff;
     box-sizing: border-box;
     overflow: hidden;
-    padding: 5%;
+    @media only screen and (max-width: 1025px){
+        width: 100%;
+        height: 85vh;
+        border-radius: 0px;
+    }
 `;
 
 export const LoginFormTitle = styled.div`
    padding-top: 2vh;
-   padding-bottom: 1vh;
-   padding-left: 2rem;
+   padding-bottom: 2vh;
+   padding-left: 1rem;
    color: #fffff;
    font-weight: 400;
    font-size: 2rem;
    border-sizing: border-box;
-`;
-
-export const LoginFormSubContainer = styled.div`
-    display: flex;
-    border-sizing: border-box;
+   @media only screen and (max-width: 1025px ){
+       width: 100%;
+   }
 `;
 
 export const Footer = styled.div`
@@ -68,20 +81,18 @@ export const Footer = styled.div`
 
 export const Form = styled.form`
     width: 100%;
-    min-height: 100%;
-    height: 74vh;
-    padding-left: 5%;
-    padding-right: 5%;
-    padding-top: 10%;
-    padding-bottom: 10%; 
-    border-right: 0.3rem solid gray;
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%; 
     box-sizing: border-box;
 `;
 
 export const H1 = styled.div`
     text-transform: uppercase;
+    padding: 1% 0;
     border-sizing: border-box;
-    margin-bottom: 2rem;
+    
 `;
 
 export const Input = styled.input`
@@ -90,17 +101,20 @@ export const Input = styled.input`
     box-sizing: border-box;
     border: none;
     border-bottom: 0.1rem solid gray;
-    height: 2rem;
-    margin-bottom: 4rem;
+    height: 2%;
+    margin-bottom: 4%;
+    outline: none;
 `;
 
 export const A = styled.a`
-   height: 2rem;
+   height: 2%;
    display: block;
-   margin-bottom: 2rem;
+   margin: 3% 0;
+   box-sizing: border-box;
    &: hover{
        cursor:default;
    }
+   
 `;
 
 export const Button = styled.button`
@@ -113,41 +127,20 @@ export const Button = styled.button`
     border-radius: 0.5rem;
     font-weight: 400;
     font-size: 1rem;
+    outline: none;
 `; 
-export const SideContainer = styled.div`
-    width: 100%;
-    min-height: 100%;
-    height: 74vh;
-    padding-left: 5%;
-    padding-top: 10%;
-    padding-right: 5%;
-    text-align: center;
-    font-weight: 500;
-    font-size: 1.5rem;
-    box-sizing: border-box;
-`;
-
-export const Image = styled.image`
-   display: block;
-   border: 1rem solid yellow;
-    width: 100%;
-    height: 15rem;
-   
-`;
 
 export const Label = styled.label`
   width: 100%;
   font-size: 1rem;
   display: block;
+  padding: 1% 0;
+  box-sizing: border-box;
 `;
 
 export const ErrorStyle = styled.div`
-color: red;
-font-weight: 500;
-/* margin: 0 0 20px 0; */
-margin-top: -0.8em;
-`;
-
-export const Div =styled.div`
-    margin-top: 10rem; 
+   color: red;
+   font-weight: 500;
+   margin-top: -0.8em;
+   box-sizing: border-box;
 `;
