@@ -4,10 +4,10 @@ export const TagContainer = styled.div`
    position: absolute;
    z-index: 1;
    width: 50%;
-   background-color: red;
    border-radius: 5px;
    box-sizing: border-box;
    overflow: hidden;
+   box-shadow: 0 0 10px #585858
 `;
 
 export const FlexContainer = styled.div`
@@ -15,7 +15,7 @@ export const FlexContainer = styled.div`
     justify-content: space-between;
     box-sizing: border-box;
     padding: 3px;
-    background-color: ${props =>  props.backgroundColor ? props.backgroundColor : '#FF0000'};
+    background-color: ${props =>  props.backgroundColor ? props.backgroundColor : '#ffffff'};
 `;
 
 export const HeaderElements = styled.div`
@@ -23,7 +23,7 @@ export const HeaderElements = styled.div`
     font-size: 1rem;
     height: 1.5rem;
     padding: 5px;
-    color: #ffffff;
+    color: #585858;
     font-weight: 600;
     box-sizing: border-box;
 

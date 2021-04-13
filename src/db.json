@@ -1,11 +1,11 @@
 {
   "user": [
     {
-      "name": "Chintan",
+      "name": "Chintan patel",
       "email": "chintan.ilasariya@oyorooms.com",
-      "password": "123457",
+      "password": "123456",
       "id": 1,
-      "confirmpassword": "123457"
+      "confirmpassword": "123456"
     }
   ],
   "tasks": [
@@ -18,16 +18,6 @@
       "note": "",
       "tag": [],
       "id": 1
-    },
-    {
-      "email": "chintan.ilasariya@oyorooms.com",
-      "task": "a",
-      "list": "Personal",
-      "owner": "Me",
-      "subTasks": [],
-      "note": "",
-      "tag": [],
-      "id": 2
     },
     {
       "email": "chintan.ilasariya@oyorooms.com",
@@ -45,7 +35,7 @@
       "list": "Personal",
       "owner": "Me",
       "subTasks": [],
-      "note": "",
+      "note": "1q",
       "tag": [],
       "id": 4
     },

@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 export const MenuContainer = styled.div`
   display: block;
-  background-color: pink;
 `;
 export const MenuListContainer = styled.ul`
     display: block;
@@ -13,7 +12,7 @@ export const MenuListContainer = styled.ul`
     padding: 0;
     list-style: none;
     width: 22.2%;
-    margin-left: -0.5%;
+    margin-left: -1%;
     border-radius: 8px;
     overflow: hidden;
     box-sizing: border-box; 

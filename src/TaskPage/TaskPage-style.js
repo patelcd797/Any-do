@@ -5,15 +5,21 @@ export const Modal = styled.div`
   display: block;
   position: absolute;
   width: 70%;
-  top: 0;
+  top: 5rem;
   z-index: 5;
   margin: 0 15%;
   padding: 1%;
   background-color: #ffffff; 
   border-radius: 5px;
   box-sizing: border-box;
-  max-height: 85vh;
   overflow:scroll;
+  box-shadow: 0 0 10px #585858;
+  @media only screen and (max-width: 1025px){
+    width: 100%;
+    margin: 0;
+    height: 100vh;
+    top: 0;
+  }
 `;
 
 export const Header = styled.div`
@@ -125,7 +131,8 @@ export const Input =styled.input`
   border: 1px solid #d9dbda;
   outline: none;
   @media only screen and (max-width: 1200px){
-    width: 85%;
+    width: 70%;
+    
   }
 `;
 
@@ -164,13 +171,14 @@ export const AddSubTaskButton = styled.button`
   width: 2.5rem;
   border-sizing: border-box;
   border:none;
-  font-size: 1rem;
-  background-color: blue;
+  font-size: 2rem;
+  background-color: #50BBEE;
   height: 2.5rem;
   color: #ffffff;
   border-radius: 100%;
   outline: none;
   font-size: 1.3rem;
+  
 `;
 
 export const NotesButton = styled.button`

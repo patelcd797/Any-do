@@ -9,6 +9,10 @@ export const MainContainer = styled.div`
     height: 100vh;
     padding: 5%;
     box-sizing: border-box;
+    @media only screen and (max-width: 1025px ){
+        background-image: none;
+        padding: 0%;
+    }
 `;
 
 export const Form = styled.form`
@@ -19,6 +23,12 @@ export const Form = styled.form`
     box-sizing: border-box;
     background-color: #ffff;
     border-radius: 4%;
+    @media only screen and (max-width: 1025px ){
+        width: 100%;
+        margin: 0;
+        border-radius: none;
+        height: 100vh;
+    }
 `;
 
 export const H1 = styled.h1`
@@ -29,7 +39,9 @@ export const H1 = styled.h1`
      text-align: center;
      border-bottom: 0.5px solid black;
      box-sizing: border-box;
-     
+     @media only screen and (max-width: 1025px){
+         padding: 0;
+     }
 `;
 
 export const FormBody = styled.div`
@@ -52,6 +64,7 @@ export const Input = styled.input`
     display: block;
     padding: 3%;
     box-sizing: border-box;
+    outline: none;
 `;
 
 export const Button = styled.button`
@@ -64,4 +77,11 @@ export const Button = styled.button`
     border-radius: 0.5rem;
     font-weight: 400;
     font-size: 1rem;
+`;
+
+export const ErrorStyle = styled.div`
+   color: red;
+   font-weight: 500;
+   margin-top: -0.8em;
+   box-sizing: border-box;
 `;

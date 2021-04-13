@@ -22,13 +22,13 @@ const Footer =( props ) =>{
 
     return (
         <FooterContainer>
-          <FooterItem backgroundColor="red">
+          <FooterItem>
             <TaskRight />
           </FooterItem>
-          <FooterItem backgroundColor="yellow">
+          <FooterItem>
             <CalendarIcon />
           </FooterItem>
-          <FooterItem backgroundColor="pink">
+          <FooterItem>
             <ProfileIcon onClick ={handleProfileClick}/>
           </FooterItem>
         </FooterContainer>

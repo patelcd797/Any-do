@@ -6,12 +6,13 @@ export const NoteModalContainer = styled.div`
     left: 20%;
     top: 20%; 
     width: 50%;
-    background-color: #FAE8E0;
+    background-color: #ffffff;
     padding: 1%;
     border-radius: 5px;
     box-sizing: border-box;
     overflow: hidden;
     box-sizing: border-box;
+    box-shadow: 0 0 10px #585858
 `;
 export const H4 = styled.h4`
    display: block;
@@ -25,6 +26,7 @@ export const TextArea = styled.textarea`
    display: block;
    width: 100%;
    height: 20vh;
+   background-color: #f1f1f1;
    padding: 2%;
    font-size: 1rem;
    outline: none;
