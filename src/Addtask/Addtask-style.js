@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-
 export const AddtaskContainer = styled.form`
     display: flex;
     justify-content: space-around;

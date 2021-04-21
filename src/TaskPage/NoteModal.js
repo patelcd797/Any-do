@@ -1,4 +1,3 @@
-import { SentimentSatisfied } from '@material-ui/icons';
 import React, {useEffect, useState} from 'react'
 import { NoteModalContainer, TextArea, H4, SaveButton } from './NoteModal-style'
 

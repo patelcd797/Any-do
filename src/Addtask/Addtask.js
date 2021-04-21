@@ -2,7 +2,7 @@ import { Add } from '@material-ui/icons';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
-import { AddButton, AddtaskContainer, Input, NavigationItem } from './Addtask-style';
+import { AddButton, AddtaskContainer, Input} from './Addtask-style';
 
 const initialState = {
     email: '',

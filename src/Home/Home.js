@@ -6,7 +6,6 @@ import Task from '../Task/Task';
 import Addtask from '../Addtask/Addtask';
 import {useHistory, useLocation} from 'react-router-dom';
 
-
 const Home = () => {
     const history = useHistory();
     const location = useLocation(); 

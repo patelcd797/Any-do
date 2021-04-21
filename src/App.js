@@ -1,8 +1,3 @@
-import Navigation from './Navigation/Navigation';
-import Footer from './Footer/Footer';
-import { AppContainer } from './App-style';
-import Task from './Task/Task';
-import Addtask from './Addtask/Addtask';
 import Home from './Home/Home';
 import Login from './Uthentication/Login/Login';
 import Registration from './Uthentication/Registretion/Registretion';
@@ -23,6 +18,7 @@ function App() {
       <Route exact path='/profile' component={Profile} />
       <Route exact path='/taskpage' component={TaskPage} />
       <Route exact path='/taskcategory' component={TaskCategoryModal} />
+      
     </Switch>
   );
 }

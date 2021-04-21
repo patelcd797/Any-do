@@ -1,7 +1,4 @@
-import reactDom from "react-dom";
-import React from 'react'
 import styled from 'styled-components'
-
 
 export const NavigationContainer = styled.div`
     display: flex;

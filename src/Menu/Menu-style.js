@@ -1,9 +1,9 @@
-import react from 'react';
 import styled from 'styled-components';
 
 export const MenuContainer = styled.div`
   display: block;
 `;
+
 export const MenuListContainer = styled.ul`
     display: block;
     position: absolute;

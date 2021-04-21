@@ -3,8 +3,7 @@ import { FooterContainer, FooterItem } from './Footer-style';
 import CalendarIcon from '@material-ui/icons/CalendarToday';
 import ProfileIcon from '@material-ui/icons/AccountBox';
 import TaskRight from '@material-ui/icons/CheckCircle';
-import {useHistory, useLocation,Link} from 'react-router-dom';
-import Calendar from 'react-calendar';
+import {useHistory, useLocation} from 'react-router-dom';
 
 const Footer =( props ) =>{
 
@@ -19,14 +18,13 @@ const Footer =( props ) =>{
     })
   }
 
-
     return (
         <FooterContainer>
           <FooterItem>
             <TaskRight />
           </FooterItem>
           <FooterItem>
-            <CalendarIcon />
+            <CalendarIcon/>
           </FooterItem>
           <FooterItem>
             <ProfileIcon onClick ={handleProfileClick}/>
