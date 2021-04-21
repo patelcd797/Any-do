@@ -1,4 +1,3 @@
-import react from 'react';
 import styled from 'styled-components';
 
 export const ShareContainer = styled.div`
