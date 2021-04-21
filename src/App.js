@@ -18,7 +18,6 @@ function App() {
       <Route exact path='/profile' component={Profile} />
       <Route exact path='/taskpage' component={TaskPage} />
       <Route exact path='/taskcategory' component={TaskCategoryModal} />
-      
     </Switch>
   );
 }
