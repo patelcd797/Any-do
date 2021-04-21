@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export const Modal = styled.div`
   display: block;
   position: absolute;
+  height: 80vh;
   width: 70%;
   top: 5rem;
   z-index: 5;
@@ -12,7 +13,6 @@ export const Modal = styled.div`
   background-color: #ffffff; 
   border-radius: 5px;
   box-sizing: border-box;
-  overflow:scroll;
   box-shadow: 0 0 10px #585858;
   @media only screen and (max-width: 1025px){
     width: 100%;
@@ -24,10 +24,16 @@ export const Modal = styled.div`
 
 export const Header = styled.div`
   position: sticky;
-  top: 0;
+  top: 5rem;
   padding: 5px;
   box-sizing: border-box;  
   width: 100%;
+`;
+
+export const ModalContainer = styled.div`
+   height: 70vh;
+   width: 100%;
+   overflow: scroll;
 `;
 
 export const ModalDivContainer = styled.div`
@@ -137,24 +143,20 @@ export const Input =styled.input`
 `;
 
 export const SubTaskElement =styled.div`
-  display: block;
+  display: float;
   padding: 0.7rem;
   color: #fffff;
-  background-color: #12ffee;
   height: 1rem;
   padding: 0.5rem;
   margin: 0.5rem 0;
   font-size:  1rem;
   font-weight: 400;
+  border: 1px solid black;
   border-radius: 5px;
 `;
 
 export const SubTaskInput = styled.input`
- height: 1%;
- width: 1%;
- float: right;
- padding: 0;
- margin: 0;
+  display: inline;
 `;
 
 export const H2 = styled.h2`
@@ -209,3 +211,7 @@ export const NotesContent = styled.div`
   word-wrap: break-word;
 `;
 
+export const Div = styled.div`
+   display: block;
+   width: 95%;
+`;

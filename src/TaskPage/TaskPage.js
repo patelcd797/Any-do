@@ -3,7 +3,7 @@ import { CloseButton, Modal, ModalDivContainer, H1,
          AddTagButton, Select, Option, Label, ListContainer,
          Input, H2, AddSubTaskButton, NotesButton, DeleteTaskButton,
          Form, TagDisplayContainer, TagButton, SubTaskElement,
-         SubTaskInput, NotesContent, Header} from './TaskPage-style';
+         SubTaskInput, NotesContent, Header, Div, ModalContainer} from './TaskPage-style';
 import {tasks} from '../db.json';
 import Tag from './Tag';
 import NoteModal from './NoteModal';
@@ -83,66 +83,68 @@ function TaskPage( props ) {
                     <CloseButton type ="button" onClick = {handleSaveModal} >Save</CloseButton>   
                 </Header>
             </ModalDivContainer>
-            <ModalDivContainer>
-                <H1>{state.task}</H1>
-            </ModalDivContainer>
-            <ModalDivContainer>
-                <AddTagButton type ="button" onClick ={handleAddTag}>Add Tag</AddTagButton>
-                {tagFlag && <Tag tags = {state.tag} setTagFlag = { setTagFlag }/>}
-                <TagDisplayContainer>
+            <ModalContainer>
+                <ModalDivContainer>
+                    <H1>{state.task}</H1>
+                </ModalDivContainer>
+                <ModalDivContainer>
+                    <AddTagButton type ="button" onClick ={handleAddTag}>Add Tag</AddTagButton>
+                    {tagFlag && <Tag tags = {state.tag} setTagFlag = { setTagFlag }/>}
+                    <TagDisplayContainer>
+                        {
+                            state.tag.map(item =>{
+                                return(
+                                <TagButton backgroundColor = {item} />
+                                )
+                            })
+                        }
+                    </TagDisplayContainer> 
+                </ModalDivContainer>
+                <ListContainer>
+                    <ModalDivContainer>
+                        <Label>LIST</Label>
+                        <Select name='list' onChange = {handleListChange}>
+                            <Option>Personal</Option>
+                            <Option>Work</Option>
+                            <Option>Grocery List</Option>
+                        </Select>
+                    </ModalDivContainer>
+                    <ModalDivContainer>
+                        <Label>OWNER</Label>
+                        <Select name = 'owner' onChange ={handleOwnerChange}> 
+                            <Option>Me</Option>
+                            <Option>Employee</Option>
+                            <Option>Friend</Option>
+                        </Select>
+                    </ModalDivContainer>               
+                </ListContainer>
+                <ModalDivContainer>
+                    <H2>SUBTASKS</H2>
                     {
-                        state.tag.map(item =>{
-                            return(
-                            <TagButton backgroundColor = {item} />
+                        state.subTasks.map(item =>{
+                            return (
+                                <SubTaskElement>
+                                    <Div>{item}</Div>
+                                    <SubTaskInput type='checkbox' />
+                                </SubTaskElement>
                             )
                         })
                     }
-                </TagDisplayContainer> 
-            </ModalDivContainer>
-            <ListContainer>
-                <ModalDivContainer>
-                    <Label>LIST</Label>
-                    <Select name='list' onChange = {handleListChange}>
-                        <Option>Personal</Option>
-                        <Option>Work</Option>
-                        <Option>Grocery List</Option>
-                    </Select>
+                    <Form onSubmit={handleAddSubTask}>
+                    <Input type="text" name="subTask" onChange = {handleInputChange} value = {subTask} placeholder = "Add a new subTask" required/>
+                    <AddSubTaskButton type='submit'>+</AddSubTaskButton>
+                    </Form>
                 </ModalDivContainer>
                 <ModalDivContainer>
-                    <Label>OWNER</Label>
-                    <Select name = 'owner' onChange ={handleOwnerChange}> 
-                        <Option>Me</Option>
-                        <Option>Employee</Option>
-                        <Option>Friend</Option>
-                    </Select>
-                </ModalDivContainer>               
-            </ListContainer>
-            <ModalDivContainer>
-                <H2>SUBTASKS</H2>
-                {
-                    state.subTasks.map(item =>{
-                        return (
-                            <SubTaskElement>
-                                <SubTaskInput type='checkbox' />{item}
-                            </SubTaskElement>
-                        )
-                    })
-                }
-                <Form onSubmit={handleAddSubTask}>
-                  <Input type="text" name="subTask" onChange = {handleInputChange} value = {subTask} placeholder = "Add a new subTask" required/>
-                  <AddSubTaskButton type='submit'>+</AddSubTaskButton>
-                </Form>
-            </ModalDivContainer>
-            <ModalDivContainer>
-                <H2>NOTES</H2>
-                {state.note.length >0 &&<NotesContent>{state.note}</NotesContent>}
-                <NotesButton type ="button" onClick={handleNoteButtonClick}>Tap to add Note</NotesButton>
-                {noteFlag && <NoteModal notes ={state.note} setNoteFlag ={setNoteFlag} setState={setState}/>}
-            </ModalDivContainer>  
-            <ModalDivContainer>
-                <DeleteTaskButton type ="button" onClick ={handleDelete} >Delete Task</DeleteTaskButton>
-            </ModalDivContainer>
-
+                    <H2>NOTES</H2>
+                    {state.note.length >0 &&<NotesContent>{state.note}</NotesContent>}
+                    <NotesButton type ="button" onClick={handleNoteButtonClick}>Tap to add Note</NotesButton>
+                    {noteFlag && <NoteModal notes ={state.note} setNoteFlag ={setNoteFlag} setState={setState}/>}
+                </ModalDivContainer>  
+                <ModalDivContainer>
+                    <DeleteTaskButton type ="button" onClick ={handleDelete} >Delete Task</DeleteTaskButton>
+                </ModalDivContainer>
+            </ModalContainer>
         </Modal>
     )
 }
