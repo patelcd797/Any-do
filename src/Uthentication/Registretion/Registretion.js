@@ -10,7 +10,9 @@ const initialState = {
     name:'',
     email: '',
     password: '',
-    confirmpassword: ''
+    confirmpassword: '',
+    taskYouDone: 0,
+    taskPending: 0
 };
 
 const Registration = () => {
@@ -28,7 +30,6 @@ const Registration = () => {
             ...prev,
             [name]: value
         }))
-        console.log(state[name]);
     }
 
     const handlelogin = () => history.push('/login')

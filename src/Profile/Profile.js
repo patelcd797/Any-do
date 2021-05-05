@@ -26,7 +26,7 @@ const Profile = () =>{
     const history = useHistory();
     const location = useLocation();
     const userEmail = location.state;
-    const [state, setState] = useState(initialState);
+    const [state, setState] = useState([]);
     const [nameChangeFlag, setNameChangeFlag] = useState(true);
     const [password, setPassword] = useState(initialPasswordState);
     const [passwordFlag, setPasswordFlag] = useState(false);
@@ -40,15 +40,7 @@ const Profile = () =>{
     useEffect( () =>{
         const dbObject = user.filter( db => db.email == userEmail)
         if(dbObject.length >0)
-        {
-            setState({
-                name: dbObject[0].name,
-                email: userEmail,
-                password: dbObject[0].password,
-                id: dbObject[0].id,
-                confirmpassword: dbObject[0].confirmpassword
-            })
-        }
+          setState(dbObject[0])
     }, [])
 
     const handleInputChange =async e =>{
@@ -131,8 +123,8 @@ const Profile = () =>{
                     {nameChangeFlag && <Create onClick={handleNameChange}/>}
                 </Div>
                 <Div><Input type="email" name='email' value={state.email} readOnly/></Div>
-                <Div>Task you done: </Div>
-                <Div>Task Pending: </Div>
+                <Div>Task you done: {state.taskYouDone} </Div>
+                <Div>Task Pending: {state.taskPending}</Div>
                 <Div onClick={handleRestPassword}>Reset Password</Div>
                 {passwordFlag &&<Div>
                     <Form onSubmit = {handleSubmit}>
