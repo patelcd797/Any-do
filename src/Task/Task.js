@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { TaskContainer, TaskList, Input, Div } from './Task-style';
 import {tasks} from '../db.json';
 import TaskPage from '../TaskPage/TaskPage';
+import {user} from '../db.json'
 
 const Task = () => {
 
@@ -12,6 +13,8 @@ const Task = () => {
     const [id,setId] = useState(0);
     const location = useLocation();
     const userEmail = location.state;
+    const userObject = user.filter(d=> d.email==userEmail)
+    const [userState, setUserState] = useState(userObject[0]) 
 
     useEffect(() => {
         const dbObject = tasks.filter( task => task.email==userEmail)
@@ -27,6 +30,25 @@ const Task = () => {
         setModalFlag(false)
     }
 
+    const handleChange = async e =>{
+        const dbObject = state.filter(d => d.id==e.target.id)
+        dbObject[0].checked = !dbObject[0].checked;
+        if(dbObject[0].checked)
+        {
+            userState.taskPending = userState.taskPending - 1
+            userState.taskYouDone = userState.taskYouDone + 1
+
+        }
+        else
+        {
+           userState.taskPending = userState.taskPending + 1
+           userState.taskYouDone = userState.taskYouDone - 1
+            
+        }
+        await axios.put(`http://localhost:3334/user/${userState.id}`, userState)
+        await axios.put(`http://localhost:3334/tasks/${dbObject[0].id}`, dbObject[0])
+    }
+
 
 
     return (
@@ -38,7 +60,7 @@ const Task = () => {
                     <>
                         <TaskList>
                             <Div onClick={handleClick} id ={item.id}>{item.task}</Div>
-                            <Input type="checkbox" /> 
+                            <Input type="checkbox" id={item.id} checked={item.checked} onChange={handleChange}/> 
                         </TaskList>
                     </>)
                 })

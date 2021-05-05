@@ -20,7 +20,6 @@ const Login = () => {
             ...prev,
             [name]: value
         }))
-        console.log(state[name]);
     }
 
     const handleLinkClick = () => history.push('/forgotpassword');

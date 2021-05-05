@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom';
 import { AddButton, AddtaskContainer, Input} from './Addtask-style';
+import {user} from '../db.json';
 
 const initialState = {
     email: '',
@@ -11,7 +12,8 @@ const initialState = {
     owner: 'Me',
     subTasks: [],
     note: '',
-    tag: []
+    tag: [],
+    checked: false
 }
 
 const Addtask =() => {
@@ -19,9 +21,8 @@ const Addtask =() => {
     const [state, setState] = useState(initialState);
     const location = useLocation();
     const userEmail = location.state
-
-    console.log(userEmail)
-
+    const dbObject = user.filter(d=> d.email==userEmail)
+    const [userState,setUserState]= useState(dbObject[0]);
 
     useEffect(() => {
         setState(prev =>({
@@ -40,6 +41,8 @@ const Addtask =() => {
 
     const handleSubmit = async e =>{
         e.preventDefault();
+        userState.taskPending = userState.taskPending +1 ;
+        await axios.put(`http://localhost:3334/user/${userState.id}`, userState)
         await axios.post('http://localhost:3334/tasks', state)
         setState(prev =>({
             ...prev,
