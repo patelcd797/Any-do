@@ -1,0 +1,225 @@
+{
+  "user": [
+    {
+      "name": "Chintan patel",
+      "email": "chintan.ilasariya@oyorooms.com",
+      "password": "123456",
+      "id": 1,
+      "confirmpassword": "123456"
+    }
+  ],
+  "tasks": [
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "dfsuajkiloel;f'",
+      "list": "Grocery List",
+      "owner": "Me",
+      "subTasks": [
+        "fdjkjlsddk",
+        "aq",
+        "aq",
+        "a",
+        "qa",
+        "q",
+        "a"
+      ],
+      "note": "",
+      "tag": [],
+      "id": 1
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "b",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 3
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "c",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "1q",
+      "tag": [],
+      "id": 4
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "d",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 5
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "e",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 6
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "a",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 7
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "a",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 8
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "q",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 9
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "q",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 10
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "a",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [
+        "fdjkjlsddk",
+        "aq",
+        "aq",
+        "aq",
+        "aq",
+        "aq"
+      ],
+      "note": "",
+      "tag": [],
+      "id": 11
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "s",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 12
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "d",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 13
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "c",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 14
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "s",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 15
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "x",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 16
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "c",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [
+        "fdjkjlsddk",
+        "fdjkjlsddk",
+        "q",
+        "q",
+        "q",
+        "q",
+        "q",
+        "q",
+        "q"
+      ],
+      "note": "",
+      "tag": [],
+      "id": 17
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "d",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [],
+      "note": "",
+      "tag": [],
+      "id": 18
+    },
+    {
+      "email": "chintan.ilasariya@oyorooms.com",
+      "task": "w",
+      "list": "Personal",
+      "owner": "Me",
+      "subTasks": [
+        "sdfjk",
+        "kjvajsdlc;/",
+        "svjhcjas'",
+        "jvhcsa'",
+        "z\"hvhqs'a",
+        "jvbhjckasd'"
+      ],
+      "note": "adhjfkd,k.l;x/",
+      "tag": [],
+      "id": 19
+    }
+  ]
+}
