@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/Any-do/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/Any-do/static/js/main.f63255c3.chunk.js",
+    "main.js.map": "/Any-do/static/js/main.f63255c3.chunk.js.map",
+    "runtime-main.js": "/Any-do/static/js/runtime-main.7c5d079a.js",
+    "runtime-main.js.map": "/Any-do/static/js/runtime-main.7c5d079a.js.map",
+    "static/js/2.27a01aa7.chunk.js": "/Any-do/static/js/2.27a01aa7.chunk.js",
+    "static/js/2.27a01aa7.chunk.js.map": "/Any-do/static/js/2.27a01aa7.chunk.js.map",
+    "static/js/3.c590ed05.chunk.js": "/Any-do/static/js/3.c590ed05.chunk.js",
+    "static/js/3.c590ed05.chunk.js.map": "/Any-do/static/js/3.c590ed05.chunk.js.map",
+    "index.html": "/Any-do/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/Any-do/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.27a01aa7.chunk.js.LICENSE.txt": "/Any-do/static/js/2.27a01aa7.chunk.js.LICENSE.txt",
+    "static/media/Loginpagebackground.372201d7.jpg": "/Any-do/static/media/Loginpagebackground.372201d7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7c5d079a.js",
+    "static/js/2.27a01aa7.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.f63255c3.chunk.js"
+  ]
+}
