@@ -21,7 +21,7 @@ const Addtask =() => {
     const [state, setState] = useState(initialState);
     const location = useLocation();
     const userEmail = location.state
-    const dbObject = user.filter(d=> d.email==userEmail)
+    const dbObject = user.filter(d=> d.email===userEmail)
     const [userState,setUserState]= useState(dbObject[0]);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ const Addtask =() => {
             email: userEmail,
             task: ''
         }))
-    }, [])
+    }, [userEmail])
 
     const handleChange = e =>{
         setState(prev =>({

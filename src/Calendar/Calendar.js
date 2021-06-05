@@ -6,8 +6,8 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
 
 
 function Calendar() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [calendar, setCalendar] = useState({
+  const selectedDate = new Date();
+  const calendar = useState({
     date : selectedDate.getDate(),  
     month: selectedDate.getMonth(),
     year: selectedDate.getFullYear(),

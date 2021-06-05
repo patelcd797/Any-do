@@ -6,15 +6,6 @@ import { user } from '../db.json';
 import axios from 'axios';
 import { Create, Done } from '@material-ui/icons';
 
-
-const initialState = {
-    email: '',
-    name: '',
-    password: '',
-    id: 1,
-    confirmpassword: ''
-}
-
 const initialPasswordState = {
     opassword: '',
     npassword: '',
@@ -34,14 +25,11 @@ const Profile = () =>{
     const [error2, setError2] =useState('');
     const [error3, setError3] =useState('');
 
-
-
-
     useEffect( () =>{
-        const dbObject = user.filter( db => db.email == userEmail)
+        const dbObject = user.filter( db => db.email === userEmail)
         if(dbObject.length >0)
           setState(dbObject[0])
-    }, [])
+    }, [userEmail])
 
     const handleInputChange =async e =>{
         const attr = e.target.name;
@@ -73,7 +61,7 @@ const Profile = () =>{
         e.preventDefault();
         let f1 = 1, f2 = 1, f3 = 1;
         
-        if(password.opassword != state.password){
+        if(password.opassword !== state.password){
             f1=0;
             setError1('Old password is wrong')
         }
@@ -89,7 +77,7 @@ const Profile = () =>{
             f2=1;
             setError2('');
         }
-        if(password.npassword != password.cpassword){
+        if(password.npassword !== password.cpassword){
             f3=0;
             setError3('New password not match')
         }

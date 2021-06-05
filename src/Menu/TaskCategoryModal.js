@@ -16,14 +16,14 @@ function TaskCategoryModal() {
     useEffect(()=>{
         
         var dbObject;
-        if(category.list == 'All Task') 
-          dbObject= tasks.filter( d => d.email == category.email);
+        if(category.list === 'All Task') 
+          dbObject= tasks.filter( d => d.email === category.email);
         else 
-          dbObject = tasks.filter( d => (d.email == category.email && d.list== category.list))   
+          dbObject = tasks.filter( d => (d.email === category.email && d.list=== category.list))   
          console.log(dbObject);
         setState(dbObject)  
 
-    }, [])
+    }, [category.email, category.list])
 
     const handleClick = e =>{
         const idd = e.target.id

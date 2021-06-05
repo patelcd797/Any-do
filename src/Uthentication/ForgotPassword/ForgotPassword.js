@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { Form, H1, MainContainer, Label, FormBody, Input, Div, 
          Button, ErrorStyle } from './ForgotPassword-style';
-import {user} from '../../db.json';
+import axios from 'axios';         
 import {Link, useHistory} from 'react-router-dom';
 
 const ForgotPassword = () =>{
@@ -19,17 +19,17 @@ const ForgotPassword = () =>{
         }))
     }
 
-    const handleSubmit = (e) =>{
+    const handleSubmit = async(e) =>{
         e.preventDefault();
-        const dbObject = user.filter( d => d.email == state.email);
-        if(dbObject.length > 0)
-        {
-            setError1('')
-            history.push('/login');
-            // mail code
-        }
-        else
-          setError1('enter valid email')
+        await axios.post('http://localhost:8000/api/user/forgotPassword', state)
+        .then(res=>{
+            if(res.data.success)
+             history.push('/login')
+            setError1(res.data.msg) 
+        })
+        .catch(err=>{
+            setError1(err.data)
+        })
     }
 
     return (

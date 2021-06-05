@@ -28,9 +28,9 @@ function TaskPage( props ) {
     const [noteFlag, setNoteFlag] = useState(false);
 
     useEffect(() =>{
-        const dbObject = tasks.filter(task => task.id == props.id)
+        const dbObject = tasks.filter(task => task.id === props.id)
         setState(dbObject[0])
-    },[])
+    },[props.id])
 
     const handleAddTag = () =>{
         setTagFlag(true)
