@@ -86,4 +86,35 @@ router.post('/forgotPassword', (req, res)=>{
   })
 })
 
+// sending user data 
+router.post('/userData', (req, res) =>{
+  const userObject = req.body;
+  users.findOne({email: userObject.email}, (err, User) =>{
+     if(err) 
+        return res.json({success: false, user: null})
+     return res.json({success: true, user: User})  
+  })
+})
+
+//updating user data 
+router.patch('/updateUser', (req, res) =>{
+  console.log(req);
+  
+})
+
+//updating user password
+
+// deleting user
+router.delete('/delete', async (req, res) =>{
+  console.log(req);
+  
+  users.deleteOne({email: req.query.email}, (err,info) =>{
+    if(err)
+      return res.json({success: false, 'msg': 'something wrong happens'})
+    console.log(info);
+    
+  })
+
+})
+
 module.exports = router;

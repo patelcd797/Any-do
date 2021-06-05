@@ -20,7 +20,6 @@ function TaskCategoryModal() {
           dbObject= tasks.filter( d => d.email === category.email);
         else 
           dbObject = tasks.filter( d => (d.email === category.email && d.list=== category.list))   
-         console.log(dbObject);
         setState(dbObject)  
 
     }, [category.email, category.list])

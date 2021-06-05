@@ -2,12 +2,13 @@ const express = require("express");
 const PORT = 8000;
 const bodyParser = require("body-parser");
 const mongoose = require('mongoose')
+const cors = require('cors')
 
 // building server
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
-
+app.use(cors())
 
 // connecting data base
 
@@ -29,7 +30,7 @@ app.use((req, res, next) => {
   );
   res.setHeader(
     "Access-Control-Allow-Methods",
-    "GET, POST, PATCH, DELETE, OPTIONS, PUT"
+    "GET, POST, DELETE, OPTIONS, PUT, PATCH"
   );
   next();
 });

@@ -25,10 +25,12 @@ const Profile = () =>{
     const [error2, setError2] =useState('');
     const [error3, setError3] =useState('');
 
-    useEffect( () =>{
-        const dbObject = user.filter( db => db.email === userEmail)
-        if(dbObject.length >0)
-          setState(dbObject[0])
+    useEffect( async () =>{
+        await axios.post('http://localhost:8000/api/user/userData', {email: userEmail})
+        .then(res =>{
+            if(res.data.user)
+             setState(res.data.user)
+        })
     }, [userEmail])
 
     const handleInputChange =async e =>{
@@ -43,6 +45,7 @@ const Profile = () =>{
     const handleNameChange = e => setNameChangeFlag(false)
     const handleNameDone =async e => {
         setNameChangeFlag(true)
+        await axios.patch('http://localhost:8000/api/user/updateUser', state);
         await axios.put(`http://localhost:3334/user/${state.id}`, state)
     }
 
@@ -95,8 +98,13 @@ const Profile = () =>{
         }
     }
     const handleDelete =async () =>{
-        await axios.delete(`http://localhost:3334/user/${state.id}`);
-        history.push('/login');
+        await axios.delete('http://localhost:8000/api/user/delete', {params: {email: userEmail}})
+        .then( res =>{
+            if(res.data.success)
+             history.push('/login')
+            else  
+             console.log(res.data.msg);
+        })
     }
     const handleSignOut = () => history.push('/login')
 
