@@ -63,10 +63,10 @@ const Login = () => {
                         {error && <ErrorStyle>{error}</ErrorStyle>}
                         <H1>USER AUTHENTICATION</H1>
                         <Label>Email</Label>
-                        <Input type= 'email' name="email" value={state.email} onChange={handleInput}/>
+                        <Input type= 'email' name="email" value={state.email} onChange={handleInput} required/>
                         {error1 && <ErrorStyle>{error1}</ErrorStyle>}
                         <Label>Password</Label>
-                        <Input type="password" name="password" value={state.password} onChange={handleInput}/> 
+                        <Input type="password" name="password" value={state.password} onChange={handleInput} required/> 
                         {error2 && <ErrorStyle>{error2}</ErrorStyle>}
                         <A onClick={handleLinkClick}>Forgot Password</A>
                         <Button type="submit" color="green">Login</Button>

@@ -7,20 +7,12 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
 
 function Calendar() {
   const selectedDate = new Date();
-  const calendar = useState({
-    date : selectedDate.getDate(),  
-    month: selectedDate.getMonth(),
-    year: selectedDate.getFullYear(),
-  });
-
-
-  useEffect(() => {}, [])
 
   return (
       <CalendarContainer>
-        <Span>{calendar.date}</Span>  
-        <Span>{months[calendar.month]}</Span>
-        <Span>{calendar.year}</Span>
+        <Span>{selectedDate.getDate()}</Span>
+        <Span>{months[selectedDate.getMonth()]}</Span>
+        <Span>{selectedDate.getFullYear()}</Span>
       </CalendarContainer>
   );
 }
