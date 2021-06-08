@@ -33,12 +33,15 @@ const Profile = () => {
   const [error2, setError2] = useState('')
   const [error3, setError3] = useState('')
 
-  useEffect(async () => {
-    await axios
-      .post('http://localhost:8000/api/user/userData', { email: userEmail })
-      .then((res) => {
-        if (res.data.user) setState(res.data.user)
-      })
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post('http://localhost:8000/api/user/userData', { email: userEmail })
+        .then((res) => {
+          if (res.data.user) setState(res.data.user)
+        })
+    }
+    fetchData()
   }, [userEmail])
 
   const handleInputChange = async (e) => {
@@ -133,6 +136,7 @@ const Profile = () => {
         {passwordFlag && (
           <Div>
             <Form onSubmit={handleSubmit}>
+              {error && <ErrorStyle>{error}</ErrorStyle>}
               <FormDiv>
                 <Input
                   type="password"
