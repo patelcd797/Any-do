@@ -37,6 +37,8 @@ Router.post('/getCategoryBasedTasks', (req, res) => {
 })
 
 // sending task data
+//await axios.post(`http://localhost:8000/api/task/getTasks`, {email: category.email})
+
 Router.post('/getTasks', (req, res) => {
   const email = req.body.email
   tasks.find({ email: email }, (err, tasksList) => {
