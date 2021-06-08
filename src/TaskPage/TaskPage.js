@@ -4,7 +4,6 @@ import { CloseButton, Modal, ModalDivContainer, H1,
          Input, H2, AddSubTaskButton, NotesButton, DeleteTaskButton,
          Form, TagDisplayContainer, TagButton, SubTaskElement,
          SubTaskInput, NotesContent, Header, Div, ModalContainer} from './TaskPage-style';
-import {tasks} from '../db.json';
 import Tag from './Tag';
 import NoteModal from './NoteModal';
 import axios from 'axios';
@@ -28,9 +27,18 @@ function TaskPage( props ) {
     const [noteFlag, setNoteFlag] = useState(false);
 
     useEffect(() =>{
-        const dbObject = tasks.filter(task => task.id === props.id)
-        setState(dbObject[0])
+      async function fetchData(){
+        await axios.get(`http://localhost:8000/api/task/getTaskById?id=${props.id}`)
+        .then(res =>{
+            setState(res.data.task)
+        })
+      }
+      fetchData();
     },[props.id])
+
+    useEffect( () =>{
+        console.log(state);
+    })
 
     const handleAddTag = () =>{
         setTagFlag(true)
@@ -67,12 +75,13 @@ function TaskPage( props ) {
 
     const handleSaveModal =async e =>{
         props.CloseModal();
-        await axios.put(`http://localhost:3334/tasks/${state.id}`, state)
+        await axios.post(`http://localhost:8000/api/task/updateTask?id=${state._id}`,state);
     }
 
     const handleDelete =async e =>{
         props.CloseModal();
-        await axios.delete(`http://localhost:3334/tasks/${state.id}`);
+        await axios.delete(`http://localhost:8000/api/task/deleteTask?id=${state._id}`);
+        props.setRend(prev =>(!prev))
     }
 
     return (
@@ -103,7 +112,7 @@ function TaskPage( props ) {
                 <ListContainer>
                     <ModalDivContainer>
                         <Label>LIST</Label>
-                        <Select name='list' onChange = {handleListChange}>
+                        <Select name='list' onChange = {handleListChange} value={state.list}>
                             <Option>Personal</Option>
                             <Option>Work</Option>
                             <Option>Grocery List</Option>
@@ -111,7 +120,7 @@ function TaskPage( props ) {
                     </ModalDivContainer>
                     <ModalDivContainer>
                         <Label>OWNER</Label>
-                        <Select name = 'owner' onChange ={handleOwnerChange}> 
+                        <Select name = 'owner' onChange ={handleOwnerChange} value={state.owner}> 
                             <Option>Me</Option>
                             <Option>Employee</Option>
                             <Option>Friend</Option>
