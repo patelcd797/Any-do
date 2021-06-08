@@ -26,5 +26,17 @@ Router.post('/addTask', async (req, res) => {
 
 })
 
+// sending task data based on category(personal, work, grocery list)
+Router.post('/getCategoryBasedTasks', (req, res)=>{
+    const userEmail = req.body.email;
+    const category = req.query.category;
+  
+    tasks.find({email: userEmail, list: category},(err, tasksList)=>{
+      if(err)
+       return res.json({list: []})
+      return res.json({list: tasksList}) 
+    })
+    
+})
 
 module.exports = Router

@@ -4,6 +4,7 @@ import TaskPage from '../TaskPage/TaskPage';
 import { BackButton, CategoryHeader, CategoryTitle, TaskCategoryModalContainer, 
           TaskContainer, TaskList, Input, Div} from './TaskCategoryModal-style'
 import {tasks} from '../db.json';
+import axios from 'axios';
 function TaskCategoryModal() {
 
     const history = useHistory();
@@ -13,15 +14,13 @@ function TaskCategoryModal() {
     const [id,setId] = useState(0);
     const [state, setState] = useState([]);
 
-    useEffect(()=>{
+    useEffect(async ()=>{
+        if(category.list!=='All Task')
+        await axios.post(`http://localhost:8000/api/task/getCategoryBasedTasks?category=${category.list}`,{email: category.email})
+        .then(res =>{
+            setState(res.data.list)
+        })    
         
-        var dbObject;
-        if(category.list === 'All Task') 
-          dbObject= tasks.filter( d => d.email === category.email);
-        else 
-          dbObject = tasks.filter( d => (d.email === category.email && d.list=== category.list))   
-        setState(dbObject)  
-
     }, [category.email, category.list])
 
     const handleClick = e =>{
