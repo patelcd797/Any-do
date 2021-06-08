@@ -37,8 +37,9 @@ app.use((req, res, next) => {
 
 // routes for different request 
 const userRoute = require('./Routes/user.tsx')
-
+const taskRoute = require('./Routes/task.tsx')
 app.use('/api/user', userRoute);
+app.use('/api/task', taskRoute);
 
 
 app.listen(PORT, ()=>{

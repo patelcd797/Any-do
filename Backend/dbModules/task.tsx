@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const Task = mongoose.schema({
+const Task = mongoose.Schema({
     email: String,
     task: String,
     list: String,

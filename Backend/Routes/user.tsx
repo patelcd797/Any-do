@@ -102,15 +102,18 @@ router.post("/forgotPassword", (req, res) => {
 });
 
 // sending user data
+// post("http://localhost:8000/api/user/userData", { email: userEmail })
 router.post("/userData", (req, res) => {
   const userObject = req.body;
   users.findOne({ email: userObject.email }, (err, User) => {
     if (err) return res.json({ success: false, user: null });
     return res.json({ success: true, user: User });
   });
+  
 });
 
 //updating user data
+//axios.post(`http://localhost:8000/api/user/updateUser`, state all attributes of user)
 router.post("/updateUser", (req, res) => {
   const userObject = req.body;
   users.updateOne({ _id: userObject._id }, userObject, (err, info) => {
@@ -125,6 +128,7 @@ router.post("/updateUser", (req, res) => {
 });
 
 //updating user password
+//axios.post(`http://localhost:8000/api/user/resetPassword?id=${state._id}`,{oPassword,nPassword,cPassword})
 router.post("/resetPassword", (req, res) => {
   const userId = req.query.id;
   const password = req.body;
@@ -149,6 +153,7 @@ router.post("/resetPassword", (req, res) => {
 });
 
 // deleting user
+//axios.delete(`http://localhost:8000/api/user/delete?email=${userEmail}`)
 router.delete("/delete", async (req, res) => {
   users.deleteOne({ email: req.query.email }, (err, info) => {
     if (err)
