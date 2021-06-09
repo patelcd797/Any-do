@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import MenuIcon from '@material-ui/icons/Menu';
 import { Share } from '@material-ui/icons';
 import { ShareContainer, ShareListContainer, List, A } from './Share-style';
 

@@ -12,24 +12,23 @@ function Tag( props ) {
     
 
     useEffect(() =>{
-        if( props.tags.find(item => item=='yellow'))
+        if( props.tags.find(item => item==='yellow'))
           setYellow(true)
-        if( props.tags.find(item => item=='pink'))
+        if( props.tags.find(item => item==='pink'))
           setPink(true)
-        if( props.tags.find(item => item=='orange'))
+        if( props.tags.find(item => item==='orange'))
           setOrange(true)  
-        if( props.tags.find(item => item=='SkyBlue'))
+        if( props.tags.find(item => item==='SkyBlue'))
           setSkyBlue(true)
-        if( props.tags.find(item => item=='green'))
+        if( props.tags.find(item => item==='green'))
           setGreen(true)
-        if( props.tags.find(item => item=='gray'))
+        if( props.tags.find(item => item==='gray'))
           setGray(true)
         while(props.tags.length > 0) {
             props.tags.pop();
         }   
-        console.log('hgfd');
-
-    },[])
+        
+    },[props.tags])
 
     const handleClick = () =>{
         props.setTagFlag(false);

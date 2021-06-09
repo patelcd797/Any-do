@@ -1,73 +1,105 @@
-import axios from 'axios';
-import React, { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
-import { TaskContainer, TaskList, Input, Div } from './Task-style';
-import {tasks} from '../db.json';
-import TaskPage from '../TaskPage/TaskPage';
-import {user} from '../db.json'
+import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import { TaskContainer, TaskList, Input, Div } from "./Task-style";
+import TaskPage from "../TaskPage/TaskPage";
 
-const Task = () => {
+const Task = (props) => {
+  const [state, setState] = useState([]);
+  const [modalFlag, setModalFlag] = useState(false);
+  const [id, setId] = useState(0);
+  const location = useLocation();
+  const userEmail = location.state;
+  const [userState, setUserState] = useState({});
+  const [rend, setRend] = useState(false);
 
-    const [state, setState] = useState([]);
-    const [modalFlag, setModalFlag] = useState(false);
-    const [id,setId] = useState(0);
-    const location = useLocation();
-    const userEmail = location.state;
-    const userObject = user.filter(d=> d.email==userEmail)
-    const [userState, setUserState] = useState(userObject[0]) 
-
-    useEffect(() => {
-        const dbObject = tasks.filter( task => task.email==userEmail)
-        setState(dbObject)
-    },[state.task])
-
-    const handleClick = e =>{
-        const idd = e.target.id
-        setId(idd);
-        setModalFlag(true);
+  useEffect(() => {
+    async function fetchData() {
+      await axios
+        .post("http://localhost:8000/api/user/userData", { email: userEmail })
+        .then((res) => {
+          if (res.data.user) setUserState(res.data.user);
+        });
     }
-    const CloseModal = () =>{
-        setModalFlag(false)
+    fetchData();
+  }, [userEmail]);
+
+  async function getTasks() {
+    await axios
+      .post(`http://localhost:8000/api/task/getTasks`, { email: userEmail })
+      .then((res) => {
+        setState(res.data.list);
+      });
+      await axios
+        .post("http://localhost:8000/api/user/userData", { email: userEmail })
+        .then((res) => {
+          if (res.data.user) setUserState(res.data.user);
+        });
+  }
+
+  useEffect(() => {
+    getTasks();
+    setRend((prev) => prev);
+  }, [rend, props.taskChange]);
+
+  const handleClick = (e) => {
+    const idd = e.target.id;
+    setId(idd);
+    setModalFlag(true);
+  };
+  const CloseModal = () => {
+    setModalFlag(false);
+  };
+
+  const handleChange = async (e) => {
+    var task;
+    await axios
+      .get(`http://localhost:8000/api/task/getTaskById?id=${e.target.id}`)
+      .then((res) => {
+        task = res.data.task;
+      });
+    if (task.checked) task.checked = false;
+    else task.checked = true;
+    if (task.checked) {
+      userState.taskPending = userState.taskPending - 1;
+      userState.taskYouDone = userState.taskYouDone + 1;
+    } else {
+      userState.taskPending = userState.taskPending + 1;
+      userState.taskYouDone = userState.taskYouDone - 1;
     }
 
-    const handleChange = async e =>{
-        const dbObject = state.filter(d => d.id==e.target.id)
-        dbObject[0].checked = !dbObject[0].checked;
-        if(dbObject[0].checked)
-        {
-            userState.taskPending = userState.taskPending - 1
-            userState.taskYouDone = userState.taskYouDone + 1
+    await axios.post(`http://localhost:8000/api/user/updateUser`, userState);
+    await axios
+      .post(`http://localhost:8000/api/task/updateTask?id=${task._id}`, task)
+      .then((res) => {
+        setRend((prev) => !prev);
+      });
+  };
 
-        }
-        else
-        {
-           userState.taskPending = userState.taskPending + 1
-           userState.taskYouDone = userState.taskYouDone - 1
-            
-        }
-        await axios.put(`http://localhost:3334/user/${userState.id}`, userState)
-        await axios.put(`http://localhost:3334/tasks/${dbObject[0].id}`, dbObject[0])
-    }
-
-
-
-    return (
-        <TaskContainer>
-            { modalFlag && <TaskPage id={id} CloseModal={CloseModal} /> }
-            {
-                state.map(item =>{
-                    return (
-                    <>
-                        <TaskList>
-                            <Div onClick={handleClick} id ={item.id}>{item.task}</Div>
-                            <Input type="checkbox" id={item.id} checked={item.checked} onChange={handleChange}/> 
-                        </TaskList>
-                    </>)
-                })
-            }
-        </TaskContainer>
-        
-    )
-}
+  return (
+    <TaskContainer>
+      {modalFlag && (
+        <TaskPage id={id} setRend={setRend} email={userEmail} CloseModal={CloseModal} />
+      )}
+      {state.map((item) => {
+        return (
+          <>
+            <TaskList>
+              <Div onClick={handleClick} id={item._id}>
+                {item.task}
+              </Div>
+              <Input
+                type="checkbox"
+                id={item._id}
+                checked={item.checked}
+                onChange={handleChange}
+              />
+            </TaskList>
+          </>
+        );
+      })}
+    </TaskContainer>
+  );
+};
 
 export default Task;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { CalendarContainer, Span } from './Calendar-style'
 
 const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
@@ -6,21 +6,13 @@ const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul',
 
 
 function Calendar() {
-  const [selectedDate, setSelectedDate] = useState(new Date());
-  const [calendar, setCalendar] = useState({
-    date : selectedDate.getDate(),  
-    month: selectedDate.getMonth(),
-    year: selectedDate.getFullYear(),
-  });
-
-
-  useEffect(() => {}, [])
+  const selectedDate = new Date();
 
   return (
       <CalendarContainer>
-        <Span>{calendar.date}</Span>  
-        <Span>{months[calendar.month]}</Span>
-        <Span>{calendar.year}</Span>
+        <Span>{selectedDate.getDate()}</Span>
+        <Span>{months[selectedDate.getMonth()]}</Span>
+        <Span>{selectedDate.getFullYear()}</Span>
       </CalendarContainer>
   );
 }
