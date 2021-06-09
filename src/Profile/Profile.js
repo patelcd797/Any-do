@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from "react";
 import {
   Div,
   ProfileContainer,
@@ -9,108 +9,110 @@ import {
   FormDiv,
   ErrorStyle,
   ProfileBody,
-} from './Profile-style'
-import { useHistory, useLocation } from 'react-router-dom'
-import axios from 'axios'
-import { Create, Done } from '@material-ui/icons'
+} from "./Profile-style";
+import { useHistory, useLocation } from "react-router-dom";
+import axios from "axios";
+import { Create, Done } from "@material-ui/icons";
 
 const initialPasswordState = {
-  oPassword: '',
-  nPassword: '',
-  cPassword: '',
-}
+  oPassword: "",
+  nPassword: "",
+  cPassword: "",
+};
 
 const Profile = () => {
-  const history = useHistory()
-  const location = useLocation()
-  const userEmail = location.state
-  const [state, setState] = useState([])
-  const [nameChangeFlag, setNameChangeFlag] = useState(true)
-  const [password, setPassword] = useState(initialPasswordState)
-  const [passwordFlag, setPasswordFlag] = useState(false)
-  const [error, setError] = useState('')
-  const [error1, setError1] = useState('')
-  const [error2, setError2] = useState('')
-  const [error3, setError3] = useState('')
+  const history = useHistory();
+  const location = useLocation();
+  const userEmail = location.state;
+  const [state, setState] = useState([]);
+  const [nameChangeFlag, setNameChangeFlag] = useState(true);
+  const [password, setPassword] = useState(initialPasswordState);
+  const [passwordFlag, setPasswordFlag] = useState(false);
+  const [error, setError] = useState("");
+  const [error1, setError1] = useState("");
+  const [error2, setError2] = useState("");
+  const [error3, setError3] = useState("");
 
   useEffect(() => {
     async function fetchData() {
       await axios
-        .post('http://localhost:8000/api/user/userData', { email: userEmail })
+        .post("http://localhost:8000/api/user/userData", { email: userEmail })
         .then((res) => {
-          if (res.data.user) setState(res.data.user)
-        })
+          if (res.data.user) setState(res.data.user);
+        });
     }
-    fetchData()
-  }, [userEmail])
+    fetchData();
+  }, [userEmail]);
 
   const handleInputChange = async (e) => {
-    const attr = e.target.name
-    const value = e.target.value
+    const attr = e.target.name;
+    const value = e.target.value;
     setState((prev) => ({
       ...prev,
       [attr]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleNameChange = (e) => setNameChangeFlag(false)
+  const handleNameChange = (e) => setNameChangeFlag(false);
   const handleNameDone = async (e) => {
-    setNameChangeFlag(true)
-    await axios.post(`http://localhost:8000/api/user/updateUser`, state)
-  }
+    setNameChangeFlag(true);
+    await axios.post(`http://localhost:8000/api/user/updateUser`, state);
+  };
 
   const handlePasswordChange = (e) => {
-    const attr = e.target.name
-    const value = e.target.value
+    const attr = e.target.name;
+    const value = e.target.value;
     setPassword((prev) => ({
       ...prev,
       [attr]: value,
-    }))
-  }
+    }));
+  };
 
-  const handleRestPassword = () => setPasswordFlag(true)
+  const handleRestPassword = () => setPasswordFlag(true);
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
+    e.preventDefault();
     if (password.oPassword !== state.password) {
-      setError('')
-      setError1('Old password is wrong')
-    } else setError1('')
+      setError("");
+      setError1("Old password is wrong");
+    } else setError1("");
 
     if (password.nPassword.length < 6) {
-      setError('')
-      setError2('new password length < 6')
-    } else setError2('')
+      setError("");
+      setError2("new password length < 6");
+    } else setError2("");
 
     if (password.nPassword !== password.cPassword) {
-      setError('')
-      setError3('New password not match')
-    } else setError3('')
+      setError("");
+      setError3("New password not match");
+    } else setError3("");
     if (!error1 && !error2 && !error2) {
       await axios
         .post(
           `http://localhost:8000/api/user/resetPassword?id=${state._id}`,
-          password,
+          password
         )
         .then((res) => {
           if (res.data.success) {
-            setPassword(initialPasswordState)
-            setPasswordFlag(false)
+            setPassword(initialPasswordState);
+            setPasswordFlag(false);
           }
-          setError('something went wrong. try late')
-        })
+          setError("something went wrong. try late");
+        });
     }
-  }
+  };
   const handleDelete = async () => {
-    await axios
-      .delete(`http://localhost:8000/api/user/delete?email=${userEmail}`)
+    await axios.delete(`http://localhost:8000/api/task/delete`, {
+      params: { email: userEmail },
+    });
+    await axios.delete(`http://localhost:8000/api/user/delete?id=${state._id}`)
       .then((res) => {
-        console.log(res.data)
-        if (res.data.success) history.push('/login')
-        else console.log(res.data.msg)
-      })
-  }
-  const handleSignOut = () => history.push('/login')
+        console.log(res.data);
+        if (res.data.success) history.push("/login");
+        else console.log(res.data.msg);
+      });
+  };
+  const handleSignOut = () => history.push("/login");
 
   return (
     <ProfileContainer>
@@ -175,7 +177,7 @@ const Profile = () => {
         <Div onClick={handleSignOut}>Sign Out</Div>
       </ProfileBody>
     </ProfileContainer>
-  )
-}
+  );
+};
 
-export default React.memo(Profile)
+export default React.memo(Profile);

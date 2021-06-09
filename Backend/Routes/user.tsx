@@ -155,7 +155,7 @@ router.post("/resetPassword", (req, res) => {
 // deleting user
 //axios.delete(`http://localhost:8000/api/user/delete?email=${userEmail}`)
 router.delete("/delete", async (req, res) => {
-  users.deleteOne({ email: req.query.email }, (err, info) => {
+  users.deleteOne({ _id: req.query.id }, (err, info) => {
     if (err)
       return res.json({ success: false, msg: "something wrong happens" });
     return res.json({ success: true, msg: "deleted account" });

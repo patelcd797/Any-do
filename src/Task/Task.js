@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { TaskContainer, TaskList, Input, Div } from "./Task-style";
 import TaskPage from "../TaskPage/TaskPage";
 
-const Task = () => {
+const Task = (props) => {
   const [state, setState] = useState([]);
   const [modalFlag, setModalFlag] = useState(false);
   const [id, setId] = useState(0);
@@ -24,18 +24,23 @@ const Task = () => {
     fetchData();
   }, [userEmail]);
 
-  async function getTasks(){
+  async function getTasks() {
     await axios
-    .post(`http://localhost:8000/api/task/getTasks`, { email: userEmail })
-    .then((res) => {
-      setState(res.data.list);
-    });
+      .post(`http://localhost:8000/api/task/getTasks`, { email: userEmail })
+      .then((res) => {
+        setState(res.data.list);
+      });
+      await axios
+        .post("http://localhost:8000/api/user/userData", { email: userEmail })
+        .then((res) => {
+          if (res.data.user) setUserState(res.data.user);
+        });
   }
 
   useEffect(() => {
     getTasks();
-  },[rend]);
-
+    setRend((prev) => prev);
+  }, [rend, props.taskChange]);
 
   const handleClick = (e) => {
     const idd = e.target.id;
@@ -62,18 +67,20 @@ const Task = () => {
       userState.taskPending = userState.taskPending + 1;
       userState.taskYouDone = userState.taskYouDone - 1;
     }
-    
+
     await axios.post(`http://localhost:8000/api/user/updateUser`, userState);
-    await axios.post(
-      `http://localhost:8000/api/task/updateTask?id=${task._id}`,
-      task
-    );
-    getTasks();
+    await axios
+      .post(`http://localhost:8000/api/task/updateTask?id=${task._id}`, task)
+      .then((res) => {
+        setRend((prev) => !prev);
+      });
   };
 
   return (
     <TaskContainer>
-      {modalFlag && <TaskPage id={id} setRend = {setRend} CloseModal={CloseModal} />}
+      {modalFlag && (
+        <TaskPage id={id} setRend={setRend} email={userEmail} CloseModal={CloseModal} />
+      )}
       {state.map((item) => {
         return (
           <>

@@ -83,8 +83,9 @@ Router.delete("/deleteTask", async (req, res) => {
 });
 
 // deleting all tasks of uer 
+// await axios.delete(`http://localhost:8000/api/task/delete`, {params: { email: userEmail }});
 Router.delete('/delete', async (req,res)=>{
-  tasks.deleteMany({email: req.body.email},(err, info) => {
+  tasks.deleteMany({email: req.query.email},(err, info) => {
     if (err)
       return res.json({ success: false, msg: "something wrong happens" });
     return res.json({ success: true, msg: "deleted account" });

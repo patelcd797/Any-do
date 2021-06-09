@@ -17,7 +17,7 @@ const userStateInitialValue = {
   _id: 0,
 }
 
-const Addtask = () => {
+const Addtask = (props) => {
   const [state, setState] = useState(initialState)
   const location = useLocation()
   const userEmail = location.state
@@ -61,6 +61,7 @@ const Addtask = () => {
             task: '',
           }))}
     })
+    props.setTaskChange(prev =>(!prev))
   }
 
   return (
