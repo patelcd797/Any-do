@@ -1,24 +1,20 @@
-import React from 'react';
-import Navigation from '../Navigation/Navigation';
-import Footer from '../Footer/Footer';
-import { HomeContainer } from './Home-style';
-import Task from '../Task/Task';
-import Addtask from '../Addtask/Addtask';
-import {useHistory, useLocation} from 'react-router-dom';
+import React, { useState } from "react";
+import Navigation from "../Navigation/Navigation";
+import Footer from "../Footer/Footer";
+import { HomeContainer } from "./Home-style";
+import Task from "../Task/Task";
+import Addtask from "../Addtask/Addtask";
 
 const Home = () => {
-    const history = useHistory();
-    const location = useLocation(); 
-    const userEmail = location.state;
-    
-    return (
+  const [taskChange, setTaskChange] = useState(false);
+  return (
     <HomeContainer>
       <Navigation />
-      <Task />
-      <Addtask />
+      <Task taskChange={taskChange} />
+      <Addtask setTaskChange ={setTaskChange}/>
       <Footer />
     </HomeContainer>
-    );
-}
+  );
+};
 
-export default Home
+export default Home;

@@ -8,7 +8,7 @@ function NoteModal(props) {
     const handleChange = e => setNote(e.target.value)
     useEffect(()=>{
         setNote(props.notes)
-    },[])
+    },[props.notes])
 
     const handleClick = e =>{
         props.setState(prev =>({

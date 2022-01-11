@@ -14,7 +14,6 @@ const Menu = () => {
     }
 
     const handleAllTaskSelection = (e) =>{
-        console.log( e.target.name );
         history.push({
             pathname: '/taskcategory',
             state: { 

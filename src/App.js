@@ -11,6 +11,7 @@ function App() {
   return (
     <Switch>
       <Route exact path='/' component={Login} />
+      <Route exact path='/Any-do' component={Login} />
       <Route exact path='/login' component={Login} />
       <Route exact path='/register' component={Registration} />
       <Route exact path='/home' component={Home} />
@@ -18,7 +19,6 @@ function App() {
       <Route exact path='/profile' component={Profile} />
       <Route exact path='/taskpage' component={TaskPage} />
       <Route exact path='/taskcategory' component={TaskCategoryModal} />
-      
     </Switch>
   );
 }
